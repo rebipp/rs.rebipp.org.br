@@ -57,7 +57,7 @@ def findColumnWithHeader(header_row_list, header_label):
         return [True, found_column]
     else:
         return [False, 0]
-    
+
 def isoTime(offset):
     currentTime = datetime.datetime.now()
     return currentTime.strftime("%Y-%m-%dT%H:%M:%S") + offset
@@ -107,13 +107,13 @@ def generate_and_copy_mapping_and_config_files(vocab_type, namespaceUri, databas
         if row['header'] == 'skos_broader':
             frame.at[index,'value'] = namespaceUri
     frame.to_csv('../' + database + '/' + database + '-column-mappings.csv', index=False)
-        
+
     # set the core class file and domain root in the constants.csv configuration file
     frame = pd.read_csv(source_path + 'constants.csv', na_filter=False)
     frame.at[0,'domainRoot'] = namespaceUri
     frame.at[0,'coreClassFile'] = database + '.csv'
     frame.to_csv('../' + database + '/constants.csv', index=False)
-        
+
     # set the versions and replacements filenames in the linked-classes.csv file
     frame = pd.read_csv(source_path + 'linked-classes.csv', na_filter=False)
     for index,row in frame.iterrows():
@@ -123,7 +123,7 @@ def generate_and_copy_mapping_and_config_files(vocab_type, namespaceUri, databas
         if row['link_column'] == 'replaced_term_localName':
             frame.at[index,'filename'] = database + '-replacements.csv'
     frame.to_csv('../' + database + '/linked-classes.csv', index=False)
-        
+
     # create header row for current terms metadata CSV
     current_terms_header = ['document_modified', 'term_localName', 'term_isDefinedBy', 'term_created', 'term_modified', 'term_deprecated', 'replaces_term', 'replaces1_term', 'replaces2_term'] + mutable_header
     current_terms_table = [current_terms_header]
@@ -287,7 +287,7 @@ def generate_term_versions_metadata(database, versions, version_namespace, mods_
                         mostRecent = term_versions_metadata[version_row][version_column]
             # insert the most recent version found into the appropriate column
             newVersions[rowNumber][replaces_version] = mostRecent
-        
+
         # create a join record for each new version and add it to the list of new joins
         newVersionJoin =[ newVersions[rowNumber][version_column], modifications_metadata[rowNumber + 1][mods_local_name] ]
         newVersionJoins.append(newVersionJoin)
@@ -357,7 +357,7 @@ def generate_current_terms_metadata(terms_metadata, modifications_metadata, mods
                         else:
                             pass # this shouldn't really happen since there already was a check that all columns existed in the versions table
         # this section of code adds new term metadata
-        else: 
+        else:
             newTermRow = []
             for column in range(0, len(terms_metadata[0])):
                 newTermRow.append('')
@@ -439,26 +439,26 @@ def generate_current_terms_metadata(terms_metadata, modifications_metadata, mods
         term_lists_table.append(new_term_list[1])
         # after the new row is appended, its row number will be one more than the previous last row number
 
-        # The new term list's dataset directory must be added to the dataset list. 
+        # The new term list's dataset directory must be added to the dataset list.
         row_for_current_terms = [isoTime(local_offset_from_utc), # document_modified
                                 database, # term_localName
-                                'http://rs.tdwg.org/index', # dcterms_isPartOf
-                                'http://rs.tdwg.org/index/' + database, # dataset_iri
+                                'http://rs.rebipp.org.br/index', # dcterms_isPartOf
+                                'http://rs.rebipp.org.br/index/' + database, # dataset_iri
                                 date_issued, # dcterms_modified
                                 new_term_list[1][list_description], # label
                                 ''] # rdfs_comment
         datasets_index.append(row_for_current_terms)
-        
+
         # New term lists will always have a new version dataset directory, so add it, too.
         row_for_versions = [isoTime(local_offset_from_utc), # document_modified
                             versions, # term_localName
-                            'http://rs.tdwg.org/index', # dcterms_isPartOf
-                            'http://rs.tdwg.org/index/' + versions, # dataset_iri
+                            'http://rs.rebipp.org.br/index', # dcterms_isPartOf
+                            'http://rs.rebipp.org.br/index/' + versions, # dataset_iri
                             date_issued, # dcterms_modified
                             new_term_list[1][list_description] + ' versions', # label
                             ''] # rdfs_comment
         datasets_index.append(row_for_versions)
-        
+
     else: # If the term list isn't new, then its modified date needs to be updated.
         # find the row in the dataset director file for the dataset being modified
         for dataset_rownumber in range(1, len(datasets_index)):
@@ -491,7 +491,7 @@ def generate_current_terms_metadata(terms_metadata, modifications_metadata, mods
         if 'standards-versions' == datasets_index[dataset_rownumber][1]:
             datasets_index[dataset_rownumber][0] = isoTime(local_offset_from_utc)
             datasets_index[dataset_rownumber][4] = date_issued
-            
+
     writeCsv('../term-lists/term-lists.csv', term_lists_table)
     writeCsv('../index/index-datasets.csv', datasets_index)
 
@@ -619,10 +619,10 @@ def update_vocabulary_metadata(date_issued, local_offset_from_utc, term_lists_ta
     termList_subpath = list_localName.split('/')[1]
 
     # generate the vocabulary URI
-    vocabularyUri = 'http://rs.tdwg.org/' + vocab_subpath + '/'
+    vocabularyUri = 'http://rs.rebipp.org.br/' + vocab_subpath + '/'
 
     # generate the vocabulary version URI
-    vocabularyVersionUri = 'http://rs.tdwg.org/version/' + vocab_subpath + '/' + date_issued
+    vocabularyVersionUri = 'http://rs.rebipp.org.br/version/' + vocab_subpath + '/' + date_issued
 
     # check for the case where the script was previously run to update a different term list in the same new vocabulary version
     temp = findColumnWithHeader(vocabularies_versions_metadata[0], 'version')[1]
@@ -645,7 +645,7 @@ def update_vocabulary_metadata(date_issued, local_offset_from_utc, term_lists_ta
             vocabularies_table[rowNumber][vocabulary_modified] = date_issued
             vocabularies_table[rowNumber][modified_datetime] = isoTime(local_offset_from_utc)
 
-    if aNewVocabulary: # this will happen if the vocabulary did not previously exist 
+    if aNewVocabulary: # this will happen if the vocabulary did not previously exist
         try:
             new_vocabulary_row = readCsv('files_for_new/new_vocabulary.csv')[1]
         except:
@@ -674,7 +674,7 @@ def update_vocabulary_metadata(date_issued, local_offset_from_utc, term_lists_ta
     status_column = findColumnWithHeader(vocabularies_versions_metadata[0], 'vocabulary_status')[1]
 
     if not alreadyAddedVocab:
-        if aNewVocabulary: # this will happen if the vocabulary did not previously exist 
+        if aNewVocabulary: # this will happen if the vocabulary did not previously exist
             try:
                 newVocabularyRow = readCsv('files_for_new/new_vocabulary_version.csv')[1]
             except:
@@ -714,7 +714,7 @@ def update_vocabulary_metadata(date_issued, local_offset_from_utc, term_lists_ta
         writeCsv('../vocabularies-versions/vocabularies-versions.csv', vocabularies_versions_metadata)
 
     # If this is the second term list change for a new vocabulary version, the previous term list versions will already have been added.
-    # So they don't need to be added to the list.  
+    # So they don't need to be added to the list.
     if not alreadyAddedVocab:
         # create a list of every term list version that was in the most recent previous vocabulary version
         newVocabularyMembersList = []
@@ -744,15 +744,15 @@ def update_vocabulary_metadata(date_issued, local_offset_from_utc, term_lists_ta
                     if termList_subpath == termListLocalNameList[termListVersionRowNumber]:
                         # change the term list version on the list to the new one
                         newVocabularyMembersList[termListVersionRowNumber] = termlistVersionUri
-        
+
         # Now that the list of new term list versions that are part of the new vocabulary version list is created,
         # add a record for each one to the vocabulary versions members table
         for termListVersionMember in newVocabularyMembersList:
             vocabularies_versions_members.append([vocabularyVersionUri, termListVersionMember])
 
-    # In the case where previous term list versions have already been added and a new vocabulary version already generated, 
+    # In the case where previous term list versions have already been added and a new vocabulary version already generated,
     # we only need to update the new term list version.
-    else: 
+    else:
         if aNewTermList:
             # the new term list version needs be added to the list
             vocabularies_versions_members.append([vocabularyVersionUri, termlistVersionUri])
@@ -768,7 +768,7 @@ def update_vocabulary_metadata(date_issued, local_offset_from_utc, term_lists_ta
                     if versionLocalNamePiece == namespace:
                         # change the term list version on the list to the new one
                         vocabularies_versions_members[termListVersionRowNumber][1] = termlistVersionUri
-        
+
     # Write the updated vocabularies versions members table to a file
     writeCsv('../vocabularies-versions/vocabularies-versions-members.csv', vocabularies_versions_members)
 
@@ -826,7 +826,7 @@ def update_standard_metadata(date_issued, local_offset_from_utc, standardUri, vo
             standards_table[rowNumber][standard_modified] = date_issued
             standards_table[rowNumber][modified_datetime] = isoTime(local_offset_from_utc)
 
-    if aNewStandard: # this will happen if the standard did not previously exist 
+    if aNewStandard: # this will happen if the standard did not previously exist
         try:
             new_standard_row = readCsv('files_for_new/new_standard.csv')[1]
         except:
@@ -857,7 +857,7 @@ def update_standard_metadata(date_issued, local_offset_from_utc, standardUri, vo
     status_column = findColumnWithHeader(standards_versions_metadata[0], 'standard_status')[1]
 
     if not alreadyAddedStandard:
-        if aNewStandard: # this will happen if the standard did not previously exist 
+        if aNewStandard: # this will happen if the standard did not previously exist
             try:
                 newStandardRow = readCsv('files_for_new/new_standard_version.csv')[1]
             except:
@@ -896,7 +896,7 @@ def update_standard_metadata(date_issued, local_offset_from_utc, standardUri, vo
         # save as a file
         writeCsv('../standards-versions/standards-versions.csv', standards_versions_metadata)
 
-    # If this is the second term list change for a new standard version, the previous vocabulary version will have 
+    # If this is the second term list change for a new standard version, the previous vocabulary version will have
     # been added.  So in that case the vocabulary versions need to be checked to prevent duplication.
 
     if not alreadyAddedStandard:
@@ -934,7 +934,7 @@ def update_standard_metadata(date_issued, local_offset_from_utc, standardUri, vo
         # add a record for each one to the standard versions members table
         for vocabularyVersionMember in newStandardMembersList:
             standards_versions_parts.append([standardVersionUri, vocabularyVersionMember])
-            
+
     # In the case where previous vocabulary versions have already been added and a new standard version already generated
     # we only need to update the new vocabulary version
     else:
@@ -982,8 +982,8 @@ for namespace in namespaces:
     modifications_filename = namespace['modifications_file_path']
     version_namespace = namespaceUri + 'version/'
 
-    # For borrowed terms, the termlist_uri will differ from the namespace URI. 
-    # For terms minted by TDWG that follow URI pattern conventions, this should be the empty string and 
+    # For borrowed terms, the termlist_uri will differ from the namespace URI.
+    # For terms minted by TDWG that follow URI pattern conventions, this should be the empty string and
     # the termlist_uri will be set to the namespace URI.
     # In both cases the termlist version URI will be constructed from the namespace URI
     termlist_uri = namespace['termlist_uri']
@@ -1020,7 +1020,7 @@ for namespace in namespaces:
     # Step 6. Update list of termlist members and add the termlist replacement (TDWG namespaces only)
     if not borrowed and not utility_namespace:
         update_termlist_version_members(aNewTermList, mostRecentListNumber, date_issued, namespaceUri, new_terms, modified_terms, version_uri, termlistVersionUri, term_lists_versions_metadata, term_lists_versions_members, term_lists_versions_replacements)
-    
+
     # Step 7. Update vocabulary-related metadata
     # NOTE: This must be within the namespace loop because the member term list information must be
     # updated for each term list. However, the whole-vocabulary metadata will not be changed after its
