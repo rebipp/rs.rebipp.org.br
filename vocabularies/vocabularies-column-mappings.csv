@@ -1,0 +1,12 @@
+header,predicate,type,value,attribute,subject_id
+label,rdfs:label,language,,en,$root
+label,dcterms:title,language,,en,$root
+description,rdfs:comment,language,,en,$root
+description,dcterms:description,language,,en,$root
+$constant,dc:publisher,language,Brazilian Network on Plant-Pollinator Interactions (REBIPP),en,$root
+$constant,dcterms:publisher,iri,https://www.wikidata.org/entity/Q109970557,,$root
+vocabulary_created,dcterms:created,datatype,,xsd:date,$root
+vocabulary_modified,dcterms:modified,datatype,,xsd:date,$root
+vocabulary_deprecated,owl:deprecated,datatype,,xsd:boolean,$root
+dc_creator,dc:creator,plain,,,$root
+dcterms_license,dcterms:license,iri,,,$root

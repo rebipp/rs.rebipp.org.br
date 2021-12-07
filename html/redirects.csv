@@ -1,0 +1,13 @@
+database,redirect,type,namespace,prefix,useNamespace,connector
+iri,yes,term,dwciri,https://ppi.rebipp.org.br/list/#,yes,_
+iri-versions,no,termVersion,dwciri,,,
+terms,yes,term,ppi,https://ppi.rebipp.org.br/list/#,yes,_
+terms-versions,no,termVersion,ppi,,,
+term-lists,no,termList,,,,
+term-lists-versions,no,termListVersion,,,,
+vocabularies,no,vocabulary,,,,
+vocabularies-versions,no,vocabularyVersion,,,,
+utility,no,term,tdwgutility,,,
+utility-versions,no,termVersion,tdwgutility,,,
+format,yes,term,acformat,https://ac.tdwg.org/format/#,yes,_
+format-versions,no,termVersion,acformat,,,

@@ -1,0 +1,16 @@
+{
+    "date_issued": "2021-12-03",
+    "local_offset_from_utc": "-03:00",
+    "vocab_type": 1,
+    "namespaces": [
+        {
+            "namespace_uri": "http://rs.rebipp.org.br/ppi/terms/",
+            "database": "terms",
+            "borrowed": false,
+            "new_term_list": true,
+            "utility_namespace": false,
+            "modifications_file_path": "ppi-revisions/ppi-revisions-2021-12-03/terms_2021-12-03.csv",
+            "termlist_uri": ""
+        }
+    ]
+}

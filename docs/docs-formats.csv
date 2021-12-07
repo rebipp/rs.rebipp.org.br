@@ -1,0 +1,6 @@
+doc_iri,mediaType,accessUri
+http://rs.rebipp.org.br/ppi/index/,text/html,http://rs.rebipp.org.br/ppi/index.htm
+http://rs.rebipp.org.br/ppi/terms/guides/rdf/,text/markdown,https://github.com/rebipp/ppi/raw/master/docs/rdf/index.md
+http://rs.rebipp.org.br/ppi/terms/guides/xml/,text/markdown,https://github.com/rebipp/ppi/raw/master/docs/xml/index.md
+http://rs.rebipp.org.br/ppi/terms/guides/text/,text/markdown,https://github.com/rebipp/ppi/raw/master/docs/text/index.md
+http://rs.rebipp.org.br/ppi/doc/list/,text/markdown,https://github.com/rebipp/ppi/raw/master/docs/list/index.md

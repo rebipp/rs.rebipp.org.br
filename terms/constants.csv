@@ -1,0 +1,2 @@
+domainRoot,coreClassFile,documentClass,creator,outputDirectory,outFileNameAfter,separator,baseIriColumn,modifiedColumn
+http://rs.rebipp.org.br/ppi/terms/,terms.csv,foaf:document,Brazilian Network on Plant-Pollinator Interactions (REBIPP),/home/jose/projects/rs.rebipp.org.br/output/,,",",term_localName,document_modified

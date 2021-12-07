@@ -1,0 +1,41 @@
+standard,label,directoryName,summary,cover_image,cover_image_by,cover_image_ref,tags,github,website,website_title,status,other
+http://www.rebipp.org.br/standards/ppi,Plant-Pollinator Interactions,ppi,"Plant-Pollinator Interactions is a standard maintained by the [REBIPP maintenance group](../../community/ppi). It includes a glossary of terms intended to **facilitate the sharing of information about biological interactions**, especially plant-pollinator interactions, by providing identifiers, labels, and definitions. PPI is based on [Darwin Core](https://www.tdwg.org/dwc).",https://www.rebipp.org.br/wp-content/uploads/2017/05/banner_small.jpg,José Augusto Salim,https://www.rebipp.org.br/wp-content/uploads/2017/05/banner_small.jpg,"technical specification, current standard, 2021",https://github.com/rebipp/ppi,https://ppi.rebipp.org,Plant-Pollinator Interactions website,,"## Maintenance group
+
+Modifications and enhancements to PPI are managed by the [PPI Maintenance Group](../../community/ppi).
+
+The best way to be involved is to create an account on [GitHub](https://github.com), and ""watch"" the [PPI GitHub repository](https://github.com/rebipp/ppi), as well as the [PPI Questions & Answers repository](https://github.com/rebipp/ppi-qa), and respond to requests for comments or ""issues"" ([PPI issues](https://github.com/rebipp/ppi/issues) and [PPI QA issues](https://github.com/rebipp/ppi-qa/issues/)). Information about how to suggest changes to the standard can be found at the [Guidelines for Contributing](https://github.com/rebipp/ppi/blob/master/.github/CONTRIBUTING.md) page.
+
+## Scope of Plant-Pollinator Interactions standard (PPI)
+
+What is in scope?
+
+- Biological interactions between plants and animals (floral visitors).
+- Terminology associated with biological interactions data.
+- Striving for compatibility with other biodiversity-related standards.
+- Facilitating the addition of components and attributes of biological interactions data.
+
+What is not in scope?
+
+- Data interchange protocols.
+- Non-biodiversity-related data.
+- Purely taxonomic data.
+
+## Audience
+
+- Biodiversity data holders (organizations, institutions, researchers).
+- Consumers of biodiversity data.
+- Developers of collections management systems.
+- Protocol developers (TAPIR).
+- Biodiversity network developers.
+
+## Contributors
+
+[List of contributors](https://github.com/rebipp/ppi/contributors)
+
+## Resources
+
+- Quick Reference Guide <https://ppi.rebipp.org.br/terms/>
+- Maintenance group: <https://www.rebipp.org.br/community/ppi/>
+- Primary collaboration platform: <https://github.com/rebipp/ppi>
+- PPI Questions & Answers: <https://github.com/rebipp/ppi-qa>
+- PPI landing page (this page): <https://www.rebipp.org.br/standards/ppi/>"

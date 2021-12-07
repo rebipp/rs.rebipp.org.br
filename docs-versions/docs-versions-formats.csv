@@ -1,0 +1,6 @@
+version_iri,mediaType,accessUri
+http://rs.rebipp.org.br/ppi/index/2021-12-03,text/html,http://rs.rebipp.org.br/ppi/index.htm
+http://rs.rebipp.org.br/ppi/terms/guides/rdf/2021-12-03,text/markdown,https://github.com/rebipp/ppi/raw/master/docs/rdf/index.md
+http://rs.rebipp.org.br/ppi/terms/guides/xml/2021-12-03,text/markdown,https://github.com/rebipp/ppi/raw/master/docs/xml/index.md
+http://rs.rebipp.org.br/ppi/terms/guides/text/2021-12-03,text/markdown,https://github.com/rebipp/ppi/raw/master/docs/text/index.md
+http://rs.rebipp.org.br/ppi/doc/list/2021-12-03,text/markdown,https://raw.githubusercontent.com/rebipp/ppi/master/docs/list/index.md
