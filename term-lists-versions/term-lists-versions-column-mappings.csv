@@ -4,8 +4,8 @@ label,rdfs:label,language,,en,$root
 label,dcterms:title,language,,en,$root
 description,rdfs:comment,language,,en,$root
 description,dcterms:description,language,,en,$root
-$constant,dc:publisher,language,Brazilian Network on Plant-Pollinator Interactions (REBIPP),en,$root
-$constant,dcterms:publisher,iri,https://www.wikidata.org/entity/Q109970557,,$root
+$constant,dc:publisher,language,Biodiversity Information Standards (TDWG),en,$root
+$constant,dcterms:publisher,iri,https://www.grid.ac/institutes/grid.480498.9,,$root
 version_modified,owl:versionInfo,plain,,,$root
 list,dcterms:isVersionOf,iri,,,$root
 vann_preferredNamespacePrefix,vann:preferredNamespacePrefix,plain,,,$root

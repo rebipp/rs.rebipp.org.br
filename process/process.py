@@ -508,6 +508,7 @@ def generate_current_terms_metadata(terms_metadata, modifications_metadata, mods
     version_uri = findColumnWithHeader(term_lists_versions_metadata[0], 'version')[1]
     version_modified = findColumnWithHeader(term_lists_versions_metadata[0], 'version_modified')[1]
     status_column = findColumnWithHeader(term_lists_versions_metadata[0], 'status')[1]
+    mostRecentListNumber = 0 # dummy list number to be replaced when most recent list is found
 
     if aNewTermList:
         # get the template for the term list version from first data row in the new_term_list_version.csv file
@@ -520,7 +521,6 @@ def generate_current_terms_metadata(terms_metadata, modifications_metadata, mods
     else:
         # find the most recent previous version of the term list
         mostRecent = 'a' # start the value of mostRecent as something earlier alphabetically than all of the list URIs
-        mostRecentListNumber = 0 # dummy list number to be replaced when most recent list is found
         for termListRowNumber in range(1, len(term_lists_versions_metadata)):
             # the row is one of the versions of the list
             if term_lists_versions_metadata[termListRowNumber][list_uri] == termlist_uri:

@@ -1,5 +1,4 @@
 database,redirect,type,namespace,prefix,useNamespace,connector
-iri,yes,term,dwciri,https://ppi.rebipp.org.br/list/#,yes,_
 iri-versions,no,termVersion,dwciri,,,
 terms,yes,term,ppi,https://ppi.rebipp.org.br/list/#,yes,_
 terms-versions,no,termVersion,ppi,,,

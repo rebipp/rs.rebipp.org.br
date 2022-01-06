@@ -41,7 +41,7 @@ def initializeGui():
 	repoText.set('Github repo path')
 	githubRepoBox = ttk.Entry(mainframe, width = 50, textvariable = StringVar())
 	githubRepoBox.grid(column=4, row=3, sticky=W)
-	githubRepoBox.insert(END, 'https://raw.githubusercontent.com/rebipp/rs.rebipp.org/')
+	githubRepoBox.insert(END, 'https://raw.githubusercontent.com/rebipp/rs.rebipp.org.br/')
 
 	#subpathText = StringVar()
 	#ttk.Label(mainframe, textvariable=subpathText).grid(column=3, row=4, sticky=(W, E))
@@ -121,12 +121,14 @@ def buildGenericXml(rootElementName, csvData):
 
 	rowNum = 0
 	for row in csvData:
+		print("|".join(row))
 		if rowNum == 0:
 			tags = row
 			# replace spaces w/ underscores in tag names
 			for i in range(len(tags)):
 				tags[i] = tags[i].replace(' ', '_')
 		else:
+			print("|".join(tags))
 			xmlData = xmlData + '<record>' + "\n"
 			for i in range(len(tags)):
 				xmlData = xmlData + '    ' + '<' + tags[i] + '>' + escapeBadXmlCharacters(row[i]) + '</' + tags[i] + '>' + "\n"

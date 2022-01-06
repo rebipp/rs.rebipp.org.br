@@ -36,17 +36,17 @@ floralSymmetry,Floral Symmetry,"The symmetry describing whether, and how, a flow
 floralSystem,Floral System,"The system by which bisexual flowers optimize their reproductive success, through mechanisms that promote self- or cross-pollination","`herkogamy`, `heterostyly`, `stylar dimorphism`","It can be a morphological, temporal or movement-based mechanism.
 Recommended best practice is to use a controlled vocabulary.","`herkogamy`, `heterostyly`, `stylar dimorphism`",http://www.w3.org/1999/02/22-rdf-syntax-ns#Property,
 plantHabit,Plant Habit,"The general appearance, characteristic form, or mode of growth of the plant","`tree`, `bush`, `herb`",,"`tree`, `bush`, `herb`",http://www.w3.org/1999/02/22-rdf-syntax-ns#Property,
-humanUse,Human Use,"Ways in which species are utilized by people, including cultural use","`human food `, `animal food`, `medicine`, `ritual`","Recommended best practice is to use a controlled vocabulary. 
+humanUse,Human Use,"Ways in which species are utilized by people, including cultural use","`human food `, `animal food`, `medicine`, `ritual`","Recommended best practice is to use a controlled vocabulary.
 ","`human food `, `animal food`, `medicine`, `ritual`",http://www.w3.org/1999/02/22-rdf-syntax-ns#Property,
 matingSystem,Mating System,A list (concatenated and separated) of the modes of gene transfer from one generation to the next through sexual reproduction,"`autogamous`, `xenogamous`",Recommended best practice is to separate the values in a list with space vertical bar space ( | ) and to use a controlled vocabulary.,"`autogamous`, `xenogamous`",http://www.w3.org/1999/02/22-rdf-syntax-ns#Property,
 selfIncompatibilityType,Self Incompatibility Type,The type or class of self-incompatibility system of the plant species,"`gametophytic`, `sporophytic`, `absent`, `homomorphic sporophytic`",Recommended best practice is to use a controlled vocabulary. If the plant has no self-incompatibility system use the value `absent`.,"`gametophytic`, `sporophytic`, `absent`, `homomorphic sporophytic`",http://www.w3.org/1999/02/22-rdf-syntax-ns#Property,
 apomiticSystemEmbryoOrigin,Apomitic System Embryo Origin,The general mode of apomixis embryo origin of a plant,"gametophytic,sporpophytic
-","Recommended best practice is to use a controlled vocabulary. 
+","Recommended best practice is to use a controlled vocabulary.
 ","gametophytic,sporpophytic
 ",http://www.w3.org/1999/02/22-rdf-syntax-ns#Property,
-apomiticSystemFertilization,Apomitic System Fertilization,The general mode of apomixis endosperm development of a plant,"autonomous,pseudogamy","Recommended best practice is to use a controlled vocabulary. 
+apomiticSystemFertilization,Apomitic System Fertilization,The general mode of apomixis endosperm development of a plant,"autonomous,pseudogamy","Recommended best practice is to use a controlled vocabulary.
 ","autonomous,pseudogamy",http://www.w3.org/1999/02/22-rdf-syntax-ns#Property,
-apomiticSystemReproduction,Apomitic System Reproduction,The general mode of apomixis reproduction of a plant,"facultative, obligate","Recommended best practice is to use a controlled vocabulary. 
+apomiticSystemReproduction,Apomitic System Reproduction,The general mode of apomixis reproduction of a plant,"facultative, obligate","Recommended best practice is to use a controlled vocabulary.
 ","facultative, obligate",http://www.w3.org/1999/02/22-rdf-syntax-ns#Property,
 sexualSystem,Sexual System,The distribution of floral types within and among the individuals of the same population,"`monoceius`, `dioceius`",The gender expression is based in the presence and distribution of fertile whorls within the flower. Recommended best practice is to use a controlled vocabulary,"`monoceius`, `dioceius`",http://www.w3.org/1999/02/22-rdf-syntax-ns#Property,
 ReproductiveSuccess,Reproductive Success,A reproductive success measurement as a result or a effect of the interaction(s) on the subject or object of the interaction,The mass of a fruit exposed to multiple visitors was 100 grams,"An outcome is related to one or more interactions, but limited to the same subject or object of the related interactions (e.g. a dwc:Occurrence or a dwc:Taxon)",The mass of a fruit exposed to multiple visitors was 100 grams,http://www.w3.org/1999/02/22-rdf-syntax-ns#Property,

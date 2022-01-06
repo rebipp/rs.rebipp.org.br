@@ -1,2 +1,2 @@
 domainRoot,coreClassFile,documentClass,creator,outputDirectory,outFileNameAfter,separator,baseIriColumn,modifiedColumn
-http://example.org/version/,template-versions.csv,foaf:document,Brazilian Network on Plant-Pollinator Interactions (REBIPP),/home/jose/projects/rs.rebipp.org.br/output/,,",",versionLocalName,document_modified
+http://rs.rebipp.org.br/ppi/version/terms/,template-versions-classes.csv,foaf:document,Brazilian Network on Plant-Pollinator Interactions (REBIPP),/home/jose/projects/rs.rebipp.org.br/output/,,",",versionLocalName,document_modified

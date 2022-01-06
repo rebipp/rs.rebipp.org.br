@@ -75,11 +75,11 @@ for page in pageInfo:
         print(': ' + standards[standardNumber]['standard_created'], file=outObject)
         print('', file=outObject)
         print('Status', file=outObject)
-        print(': [' + standards[standardNumber]['status'] + '](https://www.tdwg.org/standards/status-and-categories/)', file=outObject)
+        print(': [' + standards[standardNumber]['status'] + '](https://www.rebipp.org.br/standards/status-and-categories/)', file=outObject)
         print('', file=outObject)
         if standards[standardNumber]['category'] != '':
             print('Category', file=outObject)
-            print(': [' + standards[standardNumber]['category'] + '](https://www.tdwg.org/standards/status-and-categories/#categories%20of%20tdwg%20standards_1)', file=outObject)
+            print(': [' + standards[standardNumber]['category'] + '](https://www.rebipp.org.br/standards/status-and-categories/#categories%20of%20tdwg%20standards_1)', file=outObject)
             print('', file=outObject)
         print('Abstract', file=outObject)
         print(': ' + standards[standardNumber]['description'], file=outObject)
