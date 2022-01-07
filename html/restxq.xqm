@@ -475,19 +475,6 @@ declare
   </rest:response>
   };
 
-declare
-  %rest:path("/ppi/terms/history/dwctoabcd/index.htm")
-  %rest:header-param("Accept","{$acceptHeader}")
-  function page:dwc-dwctoabcd-versions-index-htm($acceptHeader)
-  {
-    (: This is where the versions history has been redirecting to :)
-    <rest:response>
-    <http:response status="302">
-      <http:header name="location" value="https://github.com/rebipp/ppi/blob/master/vocabulary/term_versions.csv"/>
-    </http:response>
-  </rest:response>
-  };
-
 (: Darwin Core generic redirects when specific content negotiation doesn't kick in :)
 (: must have subpath to not override the vocabulary terms :)
 declare %rest:path("/ppi/xsd/{$path=.+}") function page:dwc-xsd-redirect($path)
