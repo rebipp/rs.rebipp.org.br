@@ -1,0 +1,7 @@
+header,predicate,type,value,attribute,subject_id
+$constant,rdfs:isDefinedBy,iri,http://rs.rebipp.org.br/decisions/,,$root
+$constant,dcterms:isPartOf,iri,http://rs.rebipp.org.br/decisions/,,$root
+term_modified,dcterms:issued,datatype,,xsd:date,$root
+label,rdfs:label,language,,en,$root
+label,skos:prefLabel,language,,en,$root
+rdfs_comment,rdfs:comment,language,,en,$root
