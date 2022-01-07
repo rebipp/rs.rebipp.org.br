@@ -1,4 +1,4 @@
-term_localName,label,definition,usage,notes,examples,type,tdwgutility_organizedInClass,tdwgutility_usageScope
+term_localName,label,definition,usage,notes,examples,rdf_type,tdwgutility_organizedInClass,tdwgutility_usageScope
 Animal,Animal,Any attribute of a particular animal or a definied group of animals individuals,,,The caste of a bee,http://www.w3.org/2000/01/rdf-schema#Class,,simple
 caste,Caste,The society division that is specialized in the function it performs and is distinguished by anatomical or morphological features from other individuals of in the society,,Recommended best pratices is to use a controlled vocabulary,"`soldier`, `queen `, `worker `",http://www.w3.org/1999/02/22-rdf-syntax-ns#Property,http://rs.rebipp.org.br/ppi/terms/Animal,simple
 Plant,Plant,Any attribute of a particular plant or a defined group of plants inviduals,,,,http://www.w3.org/2000/01/rdf-schema#Class,http://rs.rebipp.org.br/ppi/terms/Plant,simple
@@ -8,17 +8,17 @@ floralSymmetry,Floral Symmetry,"The symmetry describing whether, and how, a flow
 floralSystem,Floral System,"The system by which bisexual flowers optimize their reproductive success, through mechanisms that promote self- or cross-pollination","`herkogamy`, `heterostyly`, `stylar dimorphism`","It can be a morphological, temporal or movement-based mechanism.
 Recommended best practice is to use a controlled vocabulary.","`herkogamy`, `heterostyly`, `stylar dimorphism`",http://www.w3.org/1999/02/22-rdf-syntax-ns#Property,http://rs.rebipp.org.br/ppi/terms/Plant,simple
 plantHabit,Plant Habit,"The general appearance, characteristic form, or mode of growth of the plant","`tree`, `bush`, `herb`",,"`tree`, `bush`, `herb`",http://www.w3.org/1999/02/22-rdf-syntax-ns#Property,http://rs.rebipp.org.br/ppi/terms/Plant,simple
-humanUse,Human Use,"Ways in which species are utilized by people, including cultural use","`human food `, `animal food`, `medicine`, `ritual`","Recommended best practice is to use a controlled vocabulary. 
+humanUse,Human Use,"Ways in which species are utilized by people, including cultural use","`human food `, `animal food`, `medicine`, `ritual`","Recommended best practice is to use a controlled vocabulary.
 ","`human food `, `animal food`, `medicine`, `ritual`",http://www.w3.org/1999/02/22-rdf-syntax-ns#Property,http://rs.rebipp.org.br/ppi/terms/Plant,simple
 matingSystem,Mating System,A list (concatenated and separated) of the modes of gene transfer from one generation to the next through sexual reproduction,"`autogamous`, `xenogamous`",Recommended best practice is to separate the values in a list with space vertical bar space ( | ) and to use a controlled vocabulary.,"`autogamous`, `xenogamous`",http://www.w3.org/1999/02/22-rdf-syntax-ns#Property,http://rs.rebipp.org.br/ppi/terms/Plant,simple
 selfIncompatibilityType,Self Incompatibility Type,The type or class of self-incompatibility system of the plant species,"`gametophytic`, `sporophytic`, `absent`, `homomorphic sporophytic`",Recommended best practice is to use a controlled vocabulary. If the plant has no self-incompatibility system use the value `absent`.,"`gametophytic`, `sporophytic`, `absent`, `homomorphic sporophytic`",http://www.w3.org/1999/02/22-rdf-syntax-ns#Property,http://rs.rebipp.org.br/ppi/terms/Plant,simple
 apomiticSystemEmbryoOrigin,Apomitic System Embryo Origin,The general mode of apomixis embryo origin of a plant,"gametophytic,sporpophytic
-","Recommended best practice is to use a controlled vocabulary. 
+","Recommended best practice is to use a controlled vocabulary.
 ","gametophytic,sporpophytic
 ",http://www.w3.org/1999/02/22-rdf-syntax-ns#Property,http://rs.rebipp.org.br/ppi/terms/Plant,simple
-apomiticSystemFertilization,Apomitic System Fertilization,The general mode of apomixis endosperm development of a plant,"autonomous,pseudogamy","Recommended best practice is to use a controlled vocabulary. 
+apomiticSystemFertilization,Apomitic System Fertilization,The general mode of apomixis endosperm development of a plant,"autonomous,pseudogamy","Recommended best practice is to use a controlled vocabulary.
 ","autonomous,pseudogamy",http://www.w3.org/1999/02/22-rdf-syntax-ns#Property,http://rs.rebipp.org.br/ppi/terms/Plant,simple
-apomiticSystemReproduction,Apomitic System Reproduction,The general mode of apomixis reproduction of a plant,"facultative, obligate","Recommended best practice is to use a controlled vocabulary. 
+apomiticSystemReproduction,Apomitic System Reproduction,The general mode of apomixis reproduction of a plant,"facultative, obligate","Recommended best practice is to use a controlled vocabulary.
 ","facultative, obligate",http://www.w3.org/1999/02/22-rdf-syntax-ns#Property,http://rs.rebipp.org.br/ppi/terms/Plant,simple
 sexualSystem,Sexual System,The distribution of floral types within and among the individuals of the same population,"`monoceius`, `dioceius`",The gender expression is based in the presence and distribution of fertile whorls within the flower. Recommended best practice is to use a controlled vocabulary,"`monoceius`, `dioceius`",http://www.w3.org/1999/02/22-rdf-syntax-ns#Property,http://rs.rebipp.org.br/ppi/terms/Plant,simple
 Flower,Flower,Any attribute of a particular flower or a definied group of flowers ,,,The shape and the number of anther of a flower,http://www.w3.org/2000/01/rdf-schema#Class,,simple

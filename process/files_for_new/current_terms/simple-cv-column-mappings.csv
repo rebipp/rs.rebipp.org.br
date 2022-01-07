@@ -16,4 +16,4 @@ notes,dcterms:description,language,,en,$root
 examples,skos:example,language,,en,$root
 skos_inScheme,skos:inScheme,iri,http:/example.org/,,$root
 controlled_value_string,rdf:value,plain,,,$root
-type,rdf:type,iri,,,$root
+rdf_type,rdf:type,iri,,,$root
