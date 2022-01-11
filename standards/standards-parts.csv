@@ -1,2 +1,9 @@
 standard,part,rdf_type
 http://www.rebipp.org.br/standards/ppi,http://rs.rebipp.org.br/ppi/,tdwgutility:Vocabulary
+http://www.rebipp.org.br/standards/ppi,http://rs.rebipp.org.br/ppi/index/,foaf:Document
+http://www.rebipp.org.br/standards/ppi,http://rs.rebipp.org.br/ppi/terms/guides/rdf/,foaf:Document
+http://www.rebipp.org.br/standards/ppi,http://rs.rebipp.org.br/ppi/terms/guides/text/,foaf:Document
+http://www.rebipp.org.br/standards/ppi,http://rs.rebipp.org.br/ppi/terms/guides/xml/,foaf:Document
+http://www.rebipp.org.br/standards/ppi,http://rs.rebipp.org.br/ppi/terms/simple/,foaf:Document
+http://www.rebipp.org.br/standards/ppi,http://rs.rebipp.org.br/ppi/terms/namespace/,foaf:Document
+http://www.rebipp.org.br/standards/ppi,http://rs.rebipp.org.br/ppi/doc/list/,foaf:Document
