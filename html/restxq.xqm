@@ -434,8 +434,6 @@ declare
       switch ($lookup-string)
         (: handle the special case of the tdwgutility: term list "/dwc/terms/attributes/". :)
         case "attributes" return page:see-also($acceptHeader,"/ppi/terms/attributes","term-lists","http://rs.rebipp.org.br/ppi/terms/attributes/")
-        (: handle the special case of the simple Darwin Core guide :)
-        case "simple" return page:see-also($acceptHeader,"/ppi/terms/simple","docs","http://rs.rebipp.org.br/ppi/terms/simple/")
        (: handle the special case of the Darwin Core namespace policy :)
         case "namespace" return page:see-also($acceptHeader,"/ppi/terms/namespace","docs","http://rs.rebipp.org.br/ppi/terms/namespace/")
         case "history" return

@@ -34,7 +34,7 @@ def dereference_urls(outfilename, headers, subdomain, test_urls):
         print()
     write_csv(outfilename, results)
 
-subdomain = 'http://rs-test.tdwg.org/'
+subdomain = 'http://localhost/'
 headers = ['text/html', 'text/turtle', 'application/rdf+xml', 'application/ld+json']
 
 # ------------------------
@@ -44,7 +44,7 @@ headers = ['text/html', 'text/turtle', 'application/rdf+xml', 'application/ld+js
 print('Testing URL patterns using examples from all databases')
 
 # load the database names from GitHub
-index_url = 'https://raw.githubusercontent.com/tdwg/rs.tdwg.org/master/index/index-datasets.csv'
+index_url = 'https://raw.githubusercontent.com/rebipp/rs.rebipp.org.br/master/index/index-datasets.csv'
 index_list = read_csv_as_dicts_github(index_url)
 print('retrieving data about databases:')
 database_test_urls = []
@@ -55,18 +55,18 @@ for database in index_list:
     # get the information necessary to acquire the URL from the database core CSV file
     dbname = database['term_localName']
     print(dbname)
-    config_file_url = 'https://raw.githubusercontent.com/tdwg/rs.tdwg.org/master/' + dbname + '/constants.csv'
+    config_file_url = 'https://raw.githubusercontent.com/rebipp/rs.rebipp.org.br/master/' + dbname + '/constants.csv'
     config_data = read_csv_as_dicts_github(config_file_url)
     dbase_subdomain = config_data[0]['domainRoot'] # list item 0 because there's only one data row in the constant.csv file
     dbase_core_file = config_data[0]['coreClassFile']
     dbase_uri_column = config_data[0]['baseIriColumn']
 
     # retrieve the URL data from the core CSV file
-    core_file_url = 'https://raw.githubusercontent.com/tdwg/rs.tdwg.org/master/' + dbname + '/' + dbase_core_file
+    core_file_url = 'https://raw.githubusercontent.com/rebipp/rs.rebipp.org.br/master/' + dbname + '/' + dbase_core_file
     core_data = read_csv_as_dicts_github(core_file_url)
     example_url = dbase_subdomain + core_data[0][dbase_uri_column] # list item 0 to test the first resource in the database
-    if example_url[0:19] == 'http://rs.tdwg.org/':  # skip term lists for borrowed terms outside of TDWG
-        database_test_urls.append(example_url[19:]) # save only the relative URL
+    if example_url[0:24] == 'http://rs.rebipp.org.br/':  # skip term lists for borrowed terms outside of rebipp
+        database_test_urls.append(example_url[124:]) # save only the relative URL
 print()
 
 outfilename = 'pattern-dereferencing-results.csv'
@@ -82,12 +82,12 @@ print()
 print('Testing URLs of all standards-related documents')
 
 # load the document metadata from GitHub
-docs_data_url = 'https://raw.githubusercontent.com/tdwg/rs.tdwg.org/master/docs/docs.csv'
+docs_data_url = 'https://raw.githubusercontent.com/rebipp/rs.rebipp.org.br/master/docs/docs.csv'
 docs_data = read_csv_as_dicts_github(docs_data_url)
 
 docs_urls = []
 for row in docs_data:
-    relative_url = row['current_iri'][19:]
+    relative_url = row['current_iri'][24:]
     docs_urls.append(relative_url)
 
 outfilename = 'document-dereferencing-results.csv'
@@ -96,10 +96,10 @@ print('dereferencing document URLs')
 dereference_urls(outfilename, headers, subdomain, docs_urls)
 
 # ------------------------
-# Dereference URLs of miscellaneous legacy documents that were served from rs.tdwg.org
+# Dereference URLs of miscellaneous legacy documents that were served from rs.rebipp.org.br
 # ------------------------
 
-print('Testing redirection of legacy rs.tdwg.org URLs')
+print('Testing redirection of legacy rs.rebipp.org.br URLs')
 
 # This list of URLs was determined empiracally from requests to the old server over the period of a month
 # URLs already tested above were deleted from the list
@@ -107,7 +107,7 @@ print('Testing redirection of legacy rs.tdwg.org URLs')
 headers = ['text/html'] # headers are irrelevant since the redirects are to URLs that don't support content negotiation
 
 # load the URLs from GitHub
-legacy_data_url = 'https://raw.githubusercontent.com/tdwg/rs.tdwg.org/master/index/legacy-urls.csv'
+legacy_data_url = 'https://raw.githubusercontent.com/rebipp/rs.rebipp.org.br/master/index/legacy-urls.csv'
 legacy_data = read_csv_as_dicts_github(legacy_data_url)
 
 legacy_urls = []
