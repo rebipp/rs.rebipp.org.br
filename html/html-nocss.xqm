@@ -138,7 +138,7 @@ declare function html:generate-footer() as element()+
 {
  <footer>
     <div class="container">
-		<a href="https://www.rebipp.org.br/"><img src="https://www.rebipp.org.br/theme/images/footer_logo.png"/></a>
+		<a href="https://www.rebipp.org.br/"><img src="https://www.rebipp.org.br/theme/images/logo_REBIPP.png"/></a>
 
         <div class="theme-license">
             Content on this site, made open by <a href="https://www.rebipp.org.br/">Brazilian Network on Plant-Pollinator Interactions (REBIPP)</a> is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
