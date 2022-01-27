@@ -58,7 +58,7 @@ declare
                   </rest:response>,
                   page:main-db("",$flag,"dump",$stripped-local-name)
                   )
-      else page:not-found($stripped-local-name)
+      else page:not-found("/dump/{$db}-1")
   else
       (: The database name has no extension, so perform content negotiation :)
       if (page:check-db($db))
@@ -70,7 +70,7 @@ declare
                   <http:header name="location" value="{'/dump/'||$db||'.'||$extension}"/>
                 </http:response>
               </rest:response>
-      else page:not-found($db)
+      else page:not-found("/dump/{$db}-2")
   };
 
 declare function page:check-db($db)
@@ -373,7 +373,7 @@ declare
     return page:generic-simple-id($local-id,$termlist/database/text(),$acceptHeader)
   return
     if (count($result)=0)
-    then page:not-found($listLocalname)
+    then page:not-found("/{$vocab}/{$ns}/{$local-id}")
     else $result
   };
 
@@ -396,7 +396,7 @@ declare
     return page:generic-simple-id($local-id,$termlist/database/text()||"-versions",$acceptHeader)
   return
     if (count($result)=0)
-    then page:not-found($listLocalname)
+    then page:not-found("/{$vocab}/{$ns}/version/{$local-id}")
     else $result
   };
 
@@ -1047,7 +1047,7 @@ declare %rest:path("/dwc/tdwg_gml.xsd") function page:tdwg-gml-redirect()
 declare
   %rest:error("*")
 function page:user-error() {
-page:not-found('')
+page:not-found('user-error')
 };
 
 (: Generic handler for simple local IDs :)
@@ -1076,7 +1076,7 @@ declare function page:handle-repesentation($acceptHeader,$extension,$db,$lookup-
     let $flag := page:determine-type-flag($extension)
     return page:return-representation($response-media-type,$lookup-string,$flag,$db)
   else
-    page:not-found(concat($lookup-string,".",$db))  (: respond with 404 if not in database :)
+    page:not-found("generic-simple-id")  (: respond with 404 if not in database :)
 };
 
 (: Function to return a representation of a resource :)
@@ -1119,7 +1119,7 @@ return
       case "vocabulary" return (page:success(),html:generate-vocabulary-html($lookup-string))
       case "vocabularyVersion" return (page:success(),html:generate-vocabulary-version-html($lookup-string))
       case "decisions" return (page:success(),html:generate-decisions-html($lookup-string))
-      default return page:not-found($redirectItem/type/text())
+      default return page:not-found("handle-html")
   else
     (: this sort of redirect only makes sense for terms and term versions :)
     let $base :=
@@ -1187,7 +1187,7 @@ declare function page:see-also($acceptHeader,$redirect-id,$db,$lookup-string)
             </http:response>
           </rest:response>
   else
-      page:not-found(concat($lookup-string,".",$db)) (: respond with 404 if not in database :)
+      page:not-found("see-also") (: respond with 404 if not in database :)
 };
 
 (: Function to generate a 404 Not found response :)
