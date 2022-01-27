@@ -5,7 +5,7 @@
     "namespaces": [
         {
             "namespace_uri": "http://rs.rebipp.org.br/ppicv/values/",
-            "database": "cv",
+            "database": "ppicv",
             "borrowed": false,
             "new_term_list": true,
             "utility_namespace": false,
