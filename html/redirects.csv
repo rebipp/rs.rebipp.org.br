@@ -10,3 +10,4 @@ utility,no,term,tdwgutility,,,
 utility-versions,no,termVersion,tdwgutility,,,
 format,yes,term,acformat,https://ac.tdwg.org/format/#,yes,_
 format-versions,no,termVersion,acformat,,,
+ppicv,yes,term,ppicv,https://ppi.rebipp.org.br/ppicv/#,yes,
