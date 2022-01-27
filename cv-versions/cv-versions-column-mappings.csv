@@ -13,7 +13,7 @@ definition,skos:definition,language,,en,$root
 usage,skos:scopeNote,language,,en,$root
 notes,dcterms:description,language,,en,$root
 examples,skos:example,language,,en,$root
-skos_inScheme,skos:inScheme,iri,http://rs.rebipp.org.br/ppi/cv/,,$root
+skos_inScheme,skos:inScheme,iri,http://rs.rebipp.org.br/ppicv/values/,,$root
 controlled_value_string,rdf:value,plain,,,$root
 rdf_type,rdf:type,iri,,,$root
-term_localName,dcterms:isVersionOf,iri,http://rs.rebipp.org.br/ppi/cv/,,$root
+term_localName,dcterms:isVersionOf,iri,http://rs.rebipp.org.br/ppicv/values/,,$root
