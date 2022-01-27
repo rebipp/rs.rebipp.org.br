@@ -3,7 +3,6 @@ xquery version "3.1";
 module namespace html = 'http://rs.rebipp.org.br/html';
 declare variable $html:stylesheetUrl := "https://www.rebipp.org.br/theme/css/main.css";
 
-
 declare function html:load-term-list-lookup() as element()*
 {
 (: The term list table has columns containing the term list database name, abbreviations, etc. :)

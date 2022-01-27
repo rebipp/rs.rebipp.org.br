@@ -1074,8 +1074,7 @@ fn:string-length($record/version/text())-11) (: find the part of the version bef
 (: This is the test template web page for the /home URI pattern :)
 declare function html:generate-list($db)
 {
-let $repoPath := "https://raw.githubusercontent.com/rebipp/rs.rebipp.org.br
-/"||html:branch()||"/"
+let $repoPath := "https://raw.githubusercontent.com/rebipp/rs.rebipp.org.br/"||html:branch()||"/"
 let $config := html:load-configuration($repoPath, $db)
 
 let $coreDoc := $config/coreClassFile/text()

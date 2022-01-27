@@ -34,7 +34,7 @@ def dereference_urls(outfilename, headers, subdomain, test_urls):
         print()
     write_csv(outfilename, results)
 
-subdomain = 'http://localhost/'
+subdomain = 'http://rs.rebipp.org.br/'
 headers = ['text/html', 'text/turtle', 'application/rdf+xml', 'application/ld+json']
 
 # ------------------------
