@@ -7,6 +7,7 @@ RUN apk update && apk add --no-cache python3 py3-requests supervisor varnish sha
 # Use a different directory for BaseX, because the /srv directory is declared a non-persistent volume.
 RUN cp -pr /srv /basex
 RUN usermod -d /basex basex
+COPY .basex /basex/basex
 WORKDIR /basex
 
 # BaseX script

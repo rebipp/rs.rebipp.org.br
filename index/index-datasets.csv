@@ -8,3 +8,5 @@ document_modified,term_localName,dcterms_isPartOf,dataset_iri,dcterms_modified,l
 2022-01-07T11:08:01-03:00,index,http://rs.rebipp.org.br/index,http://rs.rebipp.org.br/index/index,2021-12-03,REBIPP metadata database index,
 2022-01-27T08:56:43-03:00,ppicv,http://rs.rebipp.org.br/index,http://rs.rebipp.org.br/index/ppicv,2021-12-03,Controlled vocabulary for plant-pollinator interactions terms,
 2022-01-27T08:56:43-03:00,ppicv-versions,http://rs.rebipp.org.br/index,http://rs.rebipp.org.br/index/ppicv-versions,2021-12-03,Controlled vocabulary for plant-pollinator interactions terms versions,
+2022-01-27T08:56:43-03:00,term-lists,http://rs.rebipp.org.br/index,http://rs.rebipp.org.br/index/term-lists,2021-12-03,REBIPP vocabulary term lists,
+2021-01-27T08:56:43-03:00,term-lists-versions,http://rs.rebipp.org.br/index,http://rs.rebipp.org.br/index/term-lists-versions,2021-12-03,REBIPP vocabulary term list versions,
