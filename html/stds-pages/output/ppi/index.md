@@ -79,7 +79,7 @@ What is not in scope?
 
 ## Parts of the standard
 
-This standard is comprised of 2 vocabularies and 7 documents. 
+This standard is comprised of 2 vocabularies and 8 documents. 
 
 Vocabularies:
 
@@ -133,4 +133,13 @@ José Augusto Salim (lead author) - University of Sao Paulo (USP) <br/>
 **Publisher:** Brazilian Network on Plant-Pollinator Interactions (REBIPP) <br/>
 **Abstract:** Plant-Pollinator Interactions is a vocabulary standard for transmitting information about plant-pollinator interactions. This document lists all terms in namespaces currently used in the vocabulary. <br/>
 **Citation:** REBIPP. 2021. List of Plant-Pollinator Interactions terms. Brazilian Network on Plant-Pollinator Interactions (REBIPP). http://rs.rebipp.org.br/ppi/doc/list/2021-12-03
+
+**Title:** Plant-Pollinator Interactions Controlled Vocabulary List of Terms <br/>
+**Permanent IRI:** [http://rs.rebipp.org.br/ppi/doc/cv/](https://ppi.rebipp.org.br/cv/) <br/>
+**Created:** 2021-12-03 <br/>
+**Last modified:** 2021-12-03 <br/>
+**Contributors:** <br/>
+**Publisher:** Brazilian Network on Plant-Pollinator Interactions (REBIPP) <br/>
+**Abstract:** Plant-Pollinator Interactions CV is a supplementary controlled vocabulary term list for transmitting information about plant-pollinator interactions. This document lists all terms in namespaces currently used in the CV. <br/>
+**Citation:** REBIPP. 2021. List of Plant-Pollinator Interactions terms. Brazilian Network on Plant-Pollinator Interactions (REBIPP). http://rs.rebipp.org.br/ppi/doc/cv/2021-12-03
 
