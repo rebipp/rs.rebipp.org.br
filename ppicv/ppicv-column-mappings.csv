@@ -17,3 +17,4 @@ examples,skos:example,language,,en,$root
 skos_inScheme,skos:inScheme,iri,http://rs.rebipp.org.br/ppicv/values/,,$root
 controlled_value_string,rdf:value,plain,,,$root
 rdf_type,rdf:type,iri,,,$root
+type,rdf:type,iri,,,$root

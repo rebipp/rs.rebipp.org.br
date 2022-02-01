@@ -8,7 +8,8 @@ vocabularies,no,vocabulary,,,,
 vocabularies-versions,no,vocabularyVersion,,,,
 utility,no,term,tdwgutility,,,
 utility-versions,no,termVersion,tdwgutility,,,
+decisions,no,term,tdwgdecision,,,
 format,yes,term,acformat,https://ac.tdwg.org/format/#,yes,_
 format-versions,no,termVersion,acformat,,,
-ppicv,yes,term,ppicv,https://ppi.rebipp.org.br/cv/#,yes,
+ppicv,yes,term,ppicv,https://ppi.rebipp.org.br/cv/#,yes,_
 ppicv-versions,no,termVersion,ppicv,,,
