@@ -1,0 +1,29 @@
+404,http://localhost/ppi/terms/guides/rdf/,https://ppi.rebipp.org.br/rdf/,
+404,http://localhost/ppi/terms/guides/text/,https://ppi.rebipp.org.br/text/,
+404,http://localhost/ppi/terms/guides/xml/,https://ppi.rebipp.org.br/xml/,
+200,http://localhost/ppi/doc/list/,https://ppi.rebipp.org.br/list/,"<!DOCTYPE html>
+<htm"
+200,http://localhost/ppi/terms/guides/rdf/,http://localhost/ppi/terms/guides/rdf.ttl,@prefix rdf: <http:/
+200,http://localhost/ppi/terms/guides/text/,http://localhost/ppi/terms/guides/text.ttl,@prefix rdf: <http:/
+200,http://localhost/ppi/terms/guides/xml/,http://localhost/ppi/terms/guides/xml.ttl,@prefix rdf: <http:/
+200,http://localhost/ppi/doc/list/,http://localhost/ppi/doc/list.ttl,@prefix rdf: <http:/
+200,http://localhost/ppi/terms/guides/rdf/,http://localhost/ppi/terms/guides/rdf.rdf,"<rdf:RDF
+xmlns:rdf="""
+200,http://localhost/ppi/terms/guides/text/,http://localhost/ppi/terms/guides/text.rdf,"<rdf:RDF
+xmlns:rdf="""
+200,http://localhost/ppi/terms/guides/xml/,http://localhost/ppi/terms/guides/xml.rdf,"<rdf:RDF
+xmlns:rdf="""
+200,http://localhost/ppi/doc/list/,http://localhost/ppi/doc/list.rdf,"<rdf:RDF
+xmlns:rdf="""
+200,http://localhost/ppi/terms/guides/rdf/,http://localhost/ppi/terms/guides/rdf.json,"{
+""@context"": {
+""rdf"
+200,http://localhost/ppi/terms/guides/text/,http://localhost/ppi/terms/guides/text.json,"{
+""@context"": {
+""rdf"
+200,http://localhost/ppi/terms/guides/xml/,http://localhost/ppi/terms/guides/xml.json,"{
+""@context"": {
+""rdf"
+200,http://localhost/ppi/doc/list/,http://localhost/ppi/doc/list.json,"{
+""@context"": {
+""rdf"
