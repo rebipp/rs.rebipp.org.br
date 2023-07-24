@@ -10,7 +10,7 @@ fo,flowerOrientation controlled vocabulary,,,A SKOS ConceptScheme to be used as 
 fo001,vertical,fo,vertical,Flower facing upwards,,Flower vertically towards the sky,,http://www.w3.org/2004/02/skos/core#Concept
 fo002,horizontal,fo,horizontal,Flower roughly parallel to the ground,,,,http://www.w3.org/2004/02/skos/core#Concept
 fo003,pendant,fo,pendant,Flower facing downwards,,,,http://www.w3.org/2004/02/skos/core#Concept
-adt,antherDehiscenceType controlled vocabulary,,,,,,,http://www.w3.org/2004/02/skos/core#ConceptScheme
+adt,antherDehiscenceType controlled vocabulary,,,,,,,http://www.w3.org/2004/02/skos/core#Concept
 adt001,longitudinal,adt,longitudinal,Dehiscing along long axis of theca,,See http://www.ibiblio.org/botnet/glossary/,,http://www.w3.org/2004/02/skos/core#Concept
 adt002,poricidal,adt,poricidal,Dehiscing through a pore at apex of theca,,See http://www.ibiblio.org/botnet/glossary/,,http://www.w3.org/2004/02/skos/core#Concept
 adt003,transverse,adt,transverse,Dehiscing at rightangles to long axis of theca,,See http://www.ibiblio.org/botnet/glossary/,,http://www.w3.org/2004/02/skos/core#Concept
