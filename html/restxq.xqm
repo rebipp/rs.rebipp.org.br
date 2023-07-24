@@ -161,6 +161,28 @@ declare
       return page:see-also($acceptHeader,$redirect-id,$db,$lookup-string)
   };
 
+(: Handle ideosynchratic Darwin Core simple text version URI patterns of "/dwc/terms/simple/{versionDate}" (Darwin Core simple text versions) :)
+(: declare
+  %rest:path("/dwc/terms/simple/{$date}")
+  %rest:header-param("Accept","{$acceptHeader}")
+  function page:content-negotiation-dwc-simple-versions($acceptHeader,$date)
+  {
+  let $db := "docs-versions"
+  return
+    if (contains($date,"."))
+    then
+      (: has an extension :)
+      let $stripped-local-name := substring-before($date,".")
+      let $extension := substring-after($date,".")
+      let $lookup-string := "http://rs.tdwg.org/dwc/terms/simple/"||$stripped-local-name
+      return page:handle-repesentation($acceptHeader,$extension,$db,$lookup-string)
+    else
+      (: no extension :)
+      let $lookup-string := "http://rs.tdwg.org/dwc/terms/simple/"||$date
+      let $redirect-id := "/dwc/terms/simple/"||$date
+      return page:see-also($acceptHeader,$redirect-id,$db,$lookup-string)
+  }; :)
+
 (: Handle ideosynchratic Darwin Core namespace version URI patterns of "/dwc/terms/namespace/{versionDate}" (Darwin Core namespace policy versions) :)
 declare
   %rest:path("/ppi/terms/namespace/{$date}")
@@ -414,7 +436,7 @@ declare
         (: handle the special case of the tdwgutility: term list "/dwc/terms/attributes/". :)
         case "attributes" return page:handle-repesentation($acceptHeader,$extension,"term-lists","http://rs.rebipp.org.br/ppi/terms/attributes/")
         (: handle the special case of the simple Darwin Core guide :)
-        case "simple" return page:handle-repesentation($acceptHeader,$extension,"docs","http://rs.rebipp.org.br/ppi/terms/simple/")
+        (: case "simple" return page:handle-repesentation($acceptHeader,$extension,"docs","http://rs.rebipp.org.br/ppi/terms/simple/") :)
         (: handle the special case of the Darwin Core namespace policy :)
         case "namespace" return page:handle-repesentation($acceptHeader,$extension,"docs","http://rs.rebipp.org.br/ppi/terms/namespace/")
         (: handle the case of bookmarks to old quick reference guide :)
@@ -434,6 +456,8 @@ declare
       switch ($lookup-string)
         (: handle the special case of the tdwgutility: term list "/dwc/terms/attributes/". :)
         case "attributes" return page:see-also($acceptHeader,"/ppi/terms/attributes","term-lists","http://rs.rebipp.org.br/ppi/terms/attributes/")
+        (: handle the special case of the simple Darwin Core guide :)
+        (: case "simple" return page:see-also($acceptHeader,"/dwc/terms/simple","docs","http://rs.tdwg.org/dwc/terms/simple/") :)
        (: handle the special case of the Darwin Core namespace policy :)
         case "namespace" return page:see-also($acceptHeader,"/ppi/terms/namespace","docs","http://rs.rebipp.org.br/ppi/terms/namespace/")
         case "history" return
@@ -445,6 +469,105 @@ declare
               </http:response>
             </rest:response>
         default return page:see-also($acceptHeader,$redirect-id,$db,$lookup-string)
+  };
+
+(: Patterms to redirect legacy bookmarks :)
+declare
+  %rest:path("/ppi/terms/guides/{$local-id}/index.htm")
+  %rest:header-param("Accept","{$acceptHeader}")
+  function page:dwc-legacy-index-htm($acceptHeader,$local-id)
+  {
+    (: Note: I used a 301 (moved permanently) redirect because we basically don't want these URLs to be used any more :)
+    (: This will redirect to the "permanent URL", which then does a 302 to the Darwin Core website :)
+    <rest:response>
+    <http:response status="307">
+      <http:header name="location" value="{'/ppi/terms/guides/'||$local-id}"/>
+    </http:response>
+  </rest:response>
+  };
+
+(: declare
+  %rest:path("/ppi/terms/simple/index.htm")
+  %rest:header-param("Accept","{$acceptHeader}")
+  function page:dwc-legacy-simple-htm($acceptHeader)
+  {
+    (: Note: I used a 301 (moved permanently) redirect because we basically don't want these URLs to be used any more :)
+    (: This will redirect to the "permanent URL", which then does a 302 to the Darwin Core website :)
+    <rest:response>
+    <http:response status="307">
+      <http:header name="location" value="/ppi/terms/simple"/>
+    </http:response>
+  </rest:response>
+  }; :)
+
+declare
+  %rest:path("/ppi/terms/namespace/index.htm")
+  %rest:header-param("Accept","{$acceptHeader}")
+  function page:dwc-legacy-namespace-htm($acceptHeader)
+  {
+    (: Note: I used a 301 (moved permanently) redirect because we basically don't want these URLs to be used any more :)
+    (: This will redirect to the "permanent URL", which then does a 302 to the Darwin Core website :)
+    <rest:response>
+    <http:response status="307">
+      <http:header name="location" value="/ppi/terms/namespace"/>
+    </http:response>
+  </rest:response>
+  };
+
+declare
+  %rest:path("/ppi/index.htm")
+  %rest:header-param("Accept","{$acceptHeader}")
+  function page:dwc-legacy-dwc-landing-htm($acceptHeader)
+  {
+    (: Note: I used a 301 (moved permanently) redirect because we basically don't want these URLs to be used any more :)
+    (: This will redirect to the Darwin Core homepage :)
+    <rest:response>
+    <http:response status="307">
+      <http:header name="location" value="https://www.rebipp.org.br/standards/ppi/"/>
+    </http:response>
+  </rest:response>
+  };
+
+declare
+  %rest:path("/ppi/index")
+  %rest:header-param("Accept","{$acceptHeader}")
+  function page:dwc-index-legacy-dwc-landing-htm($acceptHeader)
+  {
+    (: Note: I used a 301 (moved permanently) redirect because we basically don't want these URLs to be used any more :)
+    (: This will redirect from http://rs.tdwg.org/dwc/index/ to the Darwin Core homepage :)
+    <rest:response>
+    <http:response status="307">
+      <http:header name="location" value="https://www.rebipp.org.br/standards/ppi/"/>
+    </http:response>
+  </rest:response>
+  };
+
+declare
+  %rest:path("/ppi/terms/history/decisions/index.htm")
+  %rest:header-param("Accept","{$acceptHeader}")
+  function page:dwc-legacy-decisions-index-htm($acceptHeader)
+  {
+    (: Note: I used a 301 (moved permanently) redirect because we basically don't want these URLs to be used any more :)
+    (: This will redirect to the TDWG Decisions page :)
+    <rest:response>
+    <http:response status="307">
+      <http:header name="location" value="/decisions"/>
+    </http:response>
+  </rest:response>
+  };
+
+declare
+  %rest:path("/ppi/terms/history/decisions")
+  %rest:header-param("Accept","{$acceptHeader}")
+  function page:dwc-legacy-decisions-htm($acceptHeader)
+  {
+    (: Note: I used a 301 (moved permanently) redirect because we basically don't want these URLs to be used any more :)
+    (: This will redirect to the TDWG Decisions page :)
+    <rest:response>
+    <http:response status="307">
+      <http:header name="location" value="/decisions"/>
+    </http:response>
+  </rest:response>
   };
 
 declare
@@ -473,6 +596,400 @@ declare
   </rest:response>
   };
 
+(: declare
+  %rest:path("/dwc/terms/history/dwctoabcd/index.htm")
+  %rest:header-param("Accept","{$acceptHeader}")
+  function page:dwc-dwctoabcd-versions-index-htm($acceptHeader)
+  {
+    (: This is where the versions history has been redirecting to :)
+    <rest:response>
+    <http:response status="302">
+      <http:header name="location" value="https://github.com/tdwg/dwc/blob/master/vocabulary/term_versions.csv"/>
+    </http:response>
+  </rest:response>
+  };
+
+declare
+  %rest:path("/dwc/terms/history/dwctoabcd")
+  %rest:header-param("Accept","{$acceptHeader}")
+  function page:dwc-dwctoabcd-versions-htm($acceptHeader)
+  {
+    (: This is where the versions history has been redirecting to :)
+    <rest:response>
+    <http:response status="302">
+      <http:header name="location" value="https://github.com/tdwg/dwc/blob/master/vocabulary/term_versions.csv"/>
+    </http:response>
+  </rest:response>
+  }; :)
+
+declare
+  %rest:path("/ppi/terms/history/index.htm")
+  %rest:header-param("Accept","{$acceptHeader}")
+  function page:dwc-legacy-history-index-htm($acceptHeader)
+  {
+    (: Note: I used a 301 (moved permanently) redirect because we basically don't want these URLs to be used any more :)
+    (: This will redirect to the rs.tdwg.org repository readme :)
+    <rest:response>
+    <http:response status="307">
+      <http:header name="location" value="https://github.com/rebipp/rs.rebipp.org.br/blob/master/README.md"/>
+    </http:response>
+  </rest:response>
+  };
+
+
+
+(:----------------------------------------------------------------------------------------------:)
+(: Ideosyncratic redirects to fixed categories of resources :)
+(: See documentation at http://docs.basex.org/wiki/RESTXQ#Forwards_and_Redirects :)
+(: 302 redirects :)
+
+(: Tapir redirects :)
+(: declare %rest:path("/tapir/cns/{$path=.+}") function page:tapir-cns-redirect($path)
+ {<rest:redirect>{"https://tdwg.github.io/tapir/cns/"||$path}</rest:redirect>};
+
+declare %rest:path("/tapir/cs/{$path=.+}") function page:tapir-cs-redirect($path)
+ {<rest:redirect>{"https://tdwg.github.io/tapir/cs/"||$path}</rest:redirect>};
+
+(: This isn't working - gets a 404
+declare %rest:path("/tapir/1.0/schema/tdwg_tapir.xsd") function page:tapir10-schema-redirect()
+ {<rest:redirect>{"https://raw.githubusercontent.com/tdwg/tapir/1.0/schema/tapir.xsd"}</rest:redirect>};
+:)
+
+declare %rest:path("/tapir/1.0/schema/tapir.xsd") function page:tapir10-tapir-redirect()
+ {<rest:redirect>{"https://raw.githubusercontent.com/tdwg/tapir/master/schema/tapir.xsd"}</rest:redirect>};
+
+(: This particular URL seems to be in use and redirects to this particular place :)
+declare %rest:path("/tapir/1.0/schema/tdwg_tapir.xsd") function page:tapir10-tdwgtapir-redirect()
+ {<rest:redirect>{"https://raw.githubusercontent.com/tdwg/infrastructure/master/rs.tdwg.org/tapir/1.0/schema/tapir.xsd"}</rest:redirect>};
+
+(: TDWG ontology redirects :)
+declare %rest:path("/ontology/{$path=.+}") function page:ontology-redirect($path)
+{
+    if (contains($path,"."))
+    then
+      <rest:redirect>{"http://tdwg.github.io/ontology/ontology/"||$path}</rest:redirect>
+    else
+      <rest:redirect>{"http://tdwg.github.io/ontology/ontology/"||$path||".rdf"}</rest:redirect>
+};
+
+declare %rest:path("/ontology2/{$path=.+}") function page:ontology2-redirect($path)
+  {<rest:redirect>{"http://tdwg-ontology.googlecode.com/svn/trunk/ontology/"||$path}</rest:redirect>};
+
+(: SDD redirects :)
+declare %rest:path("/UBIF/{$path=.+}") function page:ubif-forward($path)
+  {<rest:redirect>{"http://tdwg.github.io/sdd/"||$path}</rest:redirect>};
+
+(:declare %rest:path("/sdd/{$path=.+}") function page:sdd-forward($path)
+  {<rest:redirect>{"http://tdwg.github.io/sdd/"||$path}</rest:redirect>};:)
+
+(: ABCD redirects. Currently they all have 303 redirects, so I've done that here as well. :)
+
+(: ABCD2 terms :)
+declare
+  %rest:path("/abcd2/terms/{$path=[a-zA-Z0-9-._@]+}")
+  function page:abcd2termsx-redirect($path)
+  {
+   <rest:response>
+    <http:response status="303">
+      <http:header name="location" value="{'http://terms.tdwg.org/wiki/abcd2:'||$path}" />
+    </http:response>
+  </rest:response>
+};
+
+declare
+  %rest:path("/abcd2/terms")
+  function page:abcd2terms-redirect()
+  {
+   <rest:response>
+    <http:response status="303">
+      <http:header name="location" value="http://terms.tdwg.org/wiki/ABCD_2" />
+    </http:response>
+  </rest:response>
+};
+
+declare
+  %rest:path("/abcd2")
+  function page:abcd2-redirect()
+  {
+   <rest:response>
+    <http:response status="303">
+      <http:header name="location" value="http://terms.tdwg.org/wiki/ABCD_2" />
+    </http:response>
+  </rest:response>
+};
+
+(: ABCD EFG terms :)
+
+declare
+  %rest:path("/abcd-efg/terms/{$path=[a-zA-Z0-9-._@]+}")
+  function page:abcdefgtermsx-redirect($path)
+  {
+   <rest:response>
+    <http:response status="303">
+      <http:header name="location" value="{'http://terms.tdwg.org/wiki/abcd-efg:'||$path}" />
+    </http:response>
+  </rest:response>
+};
+
+declare
+  %rest:path("/abcd-efg/terms")
+  function page:abcdefgterms-redirect()
+  {
+   <rest:response>
+    <http:response status="303">
+      <http:header name="location" value="http://terms.tdwg.org/wiki/ABCD_EFG" />
+    </http:response>
+  </rest:response>
+};
+
+declare
+  %rest:path("/abcd-efg")
+  function page:abcdefg-redirect()
+  {
+   <rest:response>
+    <http:response status="303">
+      <http:header name="location" value="http://terms.tdwg.org/wiki/ABCD_EFG" />
+    </http:response>
+  </rest:response>
+};
+
+(: ABCD 3.0 terms :)
+
+declare
+  %rest:path("/abcd")
+  function page:abcd-redirect()
+  {
+   <rest:response>
+    <http:response status="303">
+      <http:header name="location" value="https://abcd.tdwg.org/" />
+    </http:response>
+  </rest:response>
+};
+
+(: core ontology :)
+
+declare
+  %rest:path("/abcd/terms/{$path=[a-zA-Z0-9-._@]+}")
+  %rest:header-param("Accept","{$acceptHeader}")
+  function page:abcdtermsx-redirect($path, $acceptHeader)
+  {
+    let $header := page:extract-html-header($acceptHeader)
+    return switch ($header)
+      case "application/rdf+xml" return
+         <rest:response>
+            <http:response status="303">
+              <http:header name="location" value="https://abcd.tdwg.org/ontology/abcd_concepts.owl" />
+            </http:response>
+         </rest:response>
+
+      case "text/turtle" return
+         <rest:response>
+            <http:response status="303">
+              <http:header name="location" value="https://abcd.tdwg.org/ontology/abcd_concepts.ttl" />
+            </http:response>
+         </rest:response>
+
+      case "application/ld+json" return
+         <rest:response>
+            <http:response status="303">
+              <http:header name="location" value="https://abcd.tdwg.org/ontology/abcd_concepts.jsonld" />
+            </http:response>
+         </rest:response>
+
+      case "text/html" return
+         <rest:response>
+            <http:response status="303">
+              <http:header name="location" value="{'https://abcd.tdwg.org/terms/#'||$path}" />
+            </http:response>
+         </rest:response>
+
+      default return
+         <rest:response>
+            <http:response status="303">
+              <http:header name="location" value="https://abcd.tdwg.org/ontology/abcd_concepts.owl" />
+            </http:response>
+         </rest:response>
+};
+
+(: mappings ontology :)
+
+declare
+  %rest:path("/abcd/mappings/{$path=[a-zA-Z0-9-._@]+}")
+  %rest:header-param("Accept","{$acceptHeader}")
+  function page:abcdmappingsx-redirect($path, $acceptHeader)
+  {
+    let $header := page:extract-html-header($acceptHeader)
+    return switch ($header)
+      case "application/rdf+xml" return
+         <rest:response>
+            <http:response status="303">
+              <http:header name="location" value="https://abcd.tdwg.org/ontology/abcd_mappings.owl" />
+            </http:response>
+         </rest:response>
+
+      case "text/turtle" return
+         <rest:response>
+            <http:response status="303">
+              <http:header name="location" value="https://abcd.tdwg.org/ontology/abcd_mappings.ttl" />
+            </http:response>
+         </rest:response>
+
+      case "application/ld+json" return
+         <rest:response>
+            <http:response status="303">
+              <http:header name="location" value="https://abcd.tdwg.org/ontology/abcd_mappings.jsonld" />
+            </http:response>
+         </rest:response>
+
+      case "text/html" return
+         <rest:response>
+            <http:response status="303">
+              <http:header name="location" value="{'https://abcd.tdwg.org/mappings/#'||$path}" />
+            </http:response>
+         </rest:response>
+
+      default return
+         <rest:response>
+            <http:response status="303">
+              <http:header name="location" value="https://abcd.tdwg.org/ontology/abcd_mappings.owl" />
+            </http:response>
+         </rest:response>
+};
+
+(: ABCD history URLs :)
+declare
+  %rest:path("/abcd/terms/history/{$path=[a-zA-Z0-9-._@]+}")
+  function page:history-redirect($path)
+  {
+   <rest:response>
+    <http:response status="303">
+      <http:header name="location" value="{'https://abcd.tdwg.org/terms/history/#'||$path}" />
+    </http:response>
+  </rest:response>
+};
+
+declare
+  %rest:path("/abcd/terms/?")
+  function page:termsq-redirect()
+  {
+   <rest:response>
+    <http:response status="303">
+      <http:header name="location" value="https://abcd.tdwg.org/terms/" />
+    </http:response>
+  </rest:response>
+};
+
+declare
+  %rest:path("/abcd/mapping/?")
+  function page:mappingq-redirect()
+  {
+   <rest:response>
+    <http:response status="303">
+      <http:header name="location" value="https://abcd.tdwg.org/terms/mappings/" />
+    </http:response>
+  </rest:response>
+};
+
+declare
+  %rest:path("/abcd/?")
+  function page:abcdq-redirect()
+  {
+   <rest:response>
+    <http:response status="303">
+      <http:header name="location" value="https://abcd.tdwg.org/" />
+    </http:response>
+  </rest:response>
+};
+
+(: ABCD legacy URLs :)
+declare
+  %rest:path("/abcd/2.06/{$path=[a-zA-Z0-9-._@]+}")
+  function page:abcd206x-redirect($path)
+  {
+   <rest:response>
+    <http:response status="303">
+      <http:header name="location" value="{'https://abcd.tdwg.org/legacy/2.06/'||$path}" />
+    </http:response>
+  </rest:response>
+};
+
+declare
+  %rest:path("/abcd/2.06")
+  function page:abcd206-redirect()
+  {
+   <rest:response>
+    <http:response status="303">
+      <http:header name="location" value="https://abcd.tdwg.org/legacy/2.06/" />
+    </http:response>
+  </rest:response>
+};
+
+declare
+  %rest:path("/abcd/1.2/{$path=[a-zA-Z0-9-._@]+}")
+  function page:abcd12x-redirect($path)
+  {
+   <rest:response>
+    <http:response status="303">
+      <http:header name="location" value="{'https://abcd.tdwg.org/legacy/1.2/'||$path}" />
+    </http:response>
+  </rest:response>
+};
+
+declare
+  %rest:path("/abcd/2.06/a/ABCD_2.06a.xsd")
+  function page:abcd206a-redirect()
+  {
+   <rest:response>
+    <http:response status="303">
+      <http:header name="location" value="https://abcd.tdwg.org/legacy/2.06/a/ABCD_2.06a.xsd" />
+    </http:response>
+  </rest:response>
+};
+
+declare
+  %rest:path("/abcd/2.06/b/ABCD_2.06b.xsd")
+  function page:abcd206b-redirect()
+  {
+   <rest:response>
+    <http:response status="303">
+      <http:header name="location" value="https://abcd.tdwg.org/legacy/2.06/b/ABCD_2.06b.xsd" />
+    </http:response>
+  </rest:response>
+};
+
+declare
+  %rest:path("/abcd/1.2")
+  function page:abcd12-redirect()
+  {
+   <rest:response>
+    <http:response status="303">
+      <http:header name="location" value="https://abcd.tdwg.org/legacy/1.2/" />
+    </http:response>
+  </rest:response>
+};
+
+declare
+  %rest:path("/abcd/ABCD_/{$path=[a-zA-Z0-9-._@]+}")
+  function page:abcdABCD_x-redirect($path)
+  {
+   <rest:response>
+    <http:response status="303">
+      <http:header name="location" value="{'https://abcd.tdwg.org/legacy/'||$path}" />
+    </http:response>
+  </rest:response>
+};
+
+declare
+  %rest:path("/abcd/ABCD_")
+  function page:abcdABCD_-redirect()
+  {
+   <rest:response>
+    <http:response status="303">
+      <http:header name="location" value="https://abcd.tdwg.org/legacy/ABCD_/" />
+    </http:response>
+  </rest:response>
+}; :)
+
 (: Darwin Core generic redirects when specific content negotiation doesn't kick in :)
 (: must have subpath to not override the vocabulary terms :)
 declare %rest:path("/ppi/xsd/{$path=.+}") function page:dwc-xsd-redirect($path)
@@ -489,6 +1006,38 @@ declare %rest:path("/ppi/downloads/{$path=.+}") function page:dwc-downloads-redi
 
 declare %rest:path("/ppi/examples/{$path=.+}") function page:dwc-examples-redirect($path)
  {<rest:redirect>{"https://ppi.rebipp.org.br/examples/"||$path}</rest:redirect>};
+
+(: defunct styling
+declare %rest:path("/dwc/DarwinCore_files/{$path=.+}") function page:dwc-files-redirect($path)
+ {<rest:redirect>{"https://tdwg.github.io/dwc/DarwinCore_files/"||$path}</rest:redirect>};
+:)
+
+(: declare %rest:path("/dwc/index_legacy_rddl.html") function page:tdwg-legacy-redirect()
+ {<rest:redirect>{"https://dwc.tdwg.org/index_legacy_rddl.html"}</rest:redirect>};
+
+declare %rest:path("/dwc/tdwg_basetypes.xsd") function page:tdwg-basetypes-redirect()
+ {<rest:redirect>{"https://dwc.tdwg.org/tdwg_basetypes.xsd"}</rest:redirect>};
+
+declare %rest:path("/dwc/tdwg_dw_core.xsd") function page:tdwg-dw-core-redirect()
+ {<rest:redirect>{"https://dwc.tdwg.org/tdwg_dw_core.xsd"}</rest:redirect>};
+
+declare %rest:path("/dwc/tdwg_dw_curatorial.xsd") function page:tdwg-dw-curat-redirect()
+ {<rest:redirect>{"https://dwc.tdwg.org/tdwg_dw_curatorial.xsd"}</rest:redirect>};
+
+declare %rest:path("/dwc/tdwg_dw_element.xsd") function page:tdwg-dw-element-redirect()
+ {<rest:redirect>{"https://dwc.tdwg.org/tdwg_dw_element.xsd"}</rest:redirect>};
+
+declare %rest:path("/dwc/tdwg_dw_geospatial.xsd") function page:tdwg-dw-geo-redirect()
+ {<rest:redirect>{"https://dwc.tdwg.org/tdwg_dw_geospatial.xsd"}</rest:redirect>};
+
+declare %rest:path("/dwc/tdwg_dw_record.xsd") function page:tdwg-dw-record-redirect()
+ {<rest:redirect>{"https://dwc.tdwg.org/tdwg_dw_record.xsd"}</rest:redirect>};
+
+declare %rest:path("/dwc/tdwg_dw_record_tapir.xsd") function page:tdwg-dw-tapir-redirect()
+ {<rest:redirect>{"https://dwc.tdwg.org/tdwg_dw_record_tapir.xsd"}</rest:redirect>};
+
+declare %rest:path("/dwc/tdwg_gml.xsd") function page:tdwg-gml-redirect()
+ {<rest:redirect>{"https://dwc.tdwg.org/tdwg_gml.xsd"}</rest:redirect>}; :)
 
 
 (:----------------------------------------------------------------------------------------------:)

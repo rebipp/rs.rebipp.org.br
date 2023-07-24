@@ -4,18 +4,18 @@ module namespace html = 'http://rs.rebipp.org.br/html';
 
 declare function html:subdomain()
 {
-  normalize-space(http:send-request(<http:request method='get' href='https://raw.githubusercontent.com/rebipp/rs.rebipp.org/master/html/subdomain.txt'/>)[2])
+  normalize-space(http:send-request(<http:request method='get' href='https://raw.githubusercontent.com/rebipp/rs.rebipp.org.br/master/html/subdomain.txt'/>)[2])
 };
 
 declare function html:branch()
 {
-  normalize-space(http:send-request(<http:request method='get' href='https://raw.githubusercontent.com/rebipp/rs.rebipp.org/master/html/branch.txt'/>)[2])
+  normalize-space(http:send-request(<http:request method='get' href='https://raw.githubusercontent.com/rebipp/rs.rebipp.org.br/master/html/branch.txt'/>)[2])
 };
 
 declare function html:load-term-list-lookup() as element()*
 {
 (: The term list table has columns containing the term list database name, abbreviations, etc. :)
-let $lookupDoc := http:send-request(<http:request method='get' href='{"https://raw.githubusercontent.com/rebipp/rs.rebipp.org/"||html:branch()||"/term-lists/term-lists.csv"}'/>)[2]
+let $lookupDoc := http:send-request(<http:request method='get' href='{"https://raw.githubusercontent.com/rebipp/rs.rebipp.org.br/"||html:branch()||"/term-lists/term-lists.csv"}'/>)[2]
 let $xmlLookup := csv:parse($lookupDoc, map { 'header' : true(),'separator' : "," })
 return $xmlLookup/csv
 };
@@ -124,7 +124,7 @@ declare function html:generate-header() as element()
             <ul class="navbar-nav">
 
                 <li class="nav-item">
-                    <a class="nav-link" href="https://github.com/rebipp/rs.rebipp.org/blob/master/README.md">GitHub</a>
+                    <a class="nav-link" href="https://github.com/rebipp/rs.rebipp.org.br/blob/master/README.md">GitHub</a>
                 </li>
 
             </ul>
@@ -138,10 +138,10 @@ declare function html:generate-footer() as element()+
 {
  <footer>
     <div class="container">
-		<a href="https://www.rebipp.org.br/"><img src="https://www.rebipp.org.br/theme/images/footer_logo.png"/></a>
+		<a href="https://www.rebipp.org.br/"><img src="https://www.rebipp.org.br/theme/images/logo_REBIPP.png"/></a>
 
         <div class="theme-license">
-            Content on this site, made open by <a href="https://www.rebipp.org.br/">Biodiversity Information Standards (TDWG)</a> is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+            Content on this site, made open by <a href="https://www.rebipp.org.br/">Brazilian Network on Plant-Pollinator Interactions (REBIPP)</a> is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
         </div>
     </div>
 </footer>,
@@ -527,10 +527,10 @@ return
 
   if ($std != "")
   then (
-    <strong>Part of TDWG Standard: </strong>,<a href='{$std}'>{$std}</a>,<br/>
+    <strong>Part of Standard: </strong>,<a href='{$std}'>{$std}</a>,<br/>
     )
   else (
-    <span>Not part of any TDWG Standard</span>,<br/>
+    <span>Not part of any Standard</span>,<br/>
     ),
 
   <strong>This version: </strong>,<a href='{$thisVersion}'>{$thisVersion}</a>,<br/>,
@@ -560,8 +560,8 @@ declare function html:generate-vocabulary-toc-etc-html($vocabularyIri as xs:stri
     <li><a href="#4">4 Term lists that are part of this vocabulary</a></li>
   </ul>
   <h2><a id="1">1 Introduction</a></h2>
-  <p>This document provides access to the parts and history of this vocabulary.  A TDWG vocabulary is composed of term lists that have been minted by TDWG as part of this vocabulary, or that may be composed of terms borrowed from other vocabularies within or outisde of TDWG.  The vocabulary changes over time as those lists change, or as new term lists are added to the vocabulary.  These changes are documented by versions of the vocabulary, which are &quot;snapshots&quot; of the vocabulary at the time that the version was issued.</p>
-  <p>For more information about the structure and version model of TDWG vocabularies, see the <a href="http://www.tdwg.org/standards/147">TDWG Standards Documentation Specification</a>.</p>
+  <p>This document provides access to the parts and history of this vocabulary.  A REBIPP vocabulary is composed of term lists that have been minted by REBIPP as part of this vocabulary, or that may be composed of terms borrowed from other vocabularies within or outisde of REBIPP.  The vocabulary changes over time as those lists change, or as new term lists are added to the vocabulary.  These changes are documented by versions of the vocabulary, which are &quot;snapshots&quot; of the vocabulary at the time that the version was issued.</p>
+  <p>For more information about the structure and version model of REBIPP vocabularies, see the <a href="http://www.rebipp.org.br/standards/ppi">Plant-Pollinator Interactions Vocabulary Specification</a>.</p>
   <h2><a id="2">2 Vocabulary versions</a></h2>
   <p>To examine specific historical versions of this vocabulary, click on one of the links below.</p>
   <ul style="list-style: none;">{
@@ -660,7 +660,7 @@ return
 <div>{
   <strong>Title: </strong>,<span>{$record/label/text()||" (version)"}</span>,<br/>,
   <strong>Issued: </strong>,<span>{$record/version_issued/text()}</span>,<br/>,
-  <strong>Part of TDWG Standard: </strong>,<a href='{$std}'>{$std}</a>,<br/>,
+  <strong>Part of Standard: </strong>,<a href='{$std}'>{$std}</a>,<br/>,
   <strong>This version: </strong>,<a href='{$record/version/text()}'>{$record/version/text()}</a>,<br/>,
   <strong>Version status: </strong>,<span>{$record/vocabulary_status/text()}</span>,<br/>,
   <strong>Latest version: </strong>,<a href='{$record/vocabulary/text()}'>{$record/vocabulary/text()}</a>,<br/>,
@@ -691,9 +691,9 @@ declare function html:generate-vocabulary-version-toc-etc-html($vocabularyVersio
     <li><a href="#3">3 Term list versions that were part of this vocabulary when this version of it was issued</a></li>
   </ul>
   <h2><a id="1">1 Introduction</a></h2>
-  <p>A TDWG vocabulary is composed of term lists that have been minted by TDWG as part of that vocabulary, or that may be composed of terms borrowed from other vocabularies within or outisde of TDWG.  The vocabulary changes over time as those lists change, or as new term lists are added to the vocabulary.</p>
+  <p>A REBIPP vocabulary is composed of term lists that have been minted by REBIPP as part of that vocabulary, or that may be composed of terms borrowed from other vocabularies within or outisde of REBIPP.  The vocabulary changes over time as those lists change, or as new term lists are added to the vocabulary.</p>
   <p>This vocabulary version is a &quot;snapshot&quot; of the vocabulary at a particular moment in time.  The term list versions listed below includes those that were part of the vocabulary at the time this version was issued.  The status of an individual term list may have changed since the time that the vocabulary version was issued.  The version status indicates the status of the list at the present time, not at the time the vocabulary was issued.</p>
-  <p>For more information about the structure and version model of TDWG vocabularies, see the <a href="http://www.tdwg.org/standards/147">TDWG Standards Documentation Specification</a>.</p>
+  <p>For more information about the structure and version model of REBIPP vocabularies, see the <a href="http://www.rebipp.org.br/standards/ppi">Plant-Pollinator Interactions Vocabulary Specification</a>.</p>
   <h2><a id="2">2 Vocabulary version distributions</a></h2>
   <p>This vocabulary versions list is available in the formats or distribution methods listed in the table below.  Please note that distribution access URLs may be subject to change over time.  Therefore, it is preferable to request the abstract IRI of the resources and request the desired Content-type through content negotiation.</p>
   <table border="1">{
@@ -799,9 +799,9 @@ return
     html:generate-header(),
     html:generate-list-metadata-html($listMetadata,$std,$version),
 
-  if ($termListIri = html:subdomain()||"dwc/terms/")
+  if ($termListIri = html:subdomain()||"ppi/terms/")
   then (
-    <h2>Note: This is the list of core terms defined by Darwin Core. For the <a href="https://ppi.rebipp.org.br/terms/">Darwin Core Quick Reference Guide</a>, please bookmark <a href="https://ppi.rebipp.org.br/terms/">https://ppi.rebipp.org.br/terms/</a><br/></h2>
+    <h2>Note: This is the list of core terms defined by Plant-Pollinator Interactions vocavulary. For the <a href="https://ppi.rebipp.org.br/terms/">Plant-Pollinator Interactions vocavulary Quick Reference Guide</a>, please bookmark <a href="https://ppi.rebipp.org.br/terms/">https://ppi.rebipp.org.br/terms/</a><br/></h2>
     )
   else (),
 
@@ -827,10 +827,10 @@ return
 
   if ($std != "")
   then (
-    <strong>Part of TDWG Standard: </strong>,<a href='{$std}'>{$std}</a>,<br/>
+    <strong>Part of Standard: </strong>,<a href='{$std}'>{$std}</a>,<br/>
     )
   else (
-    <span>Not part of any TDWG Standard</span>,<br/>
+    <span>Not part of any Standard</span>,<br/>
     ),
 
   <strong>This version: </strong>,<a href='{$thisVersion}'>{$thisVersion}</a>,<br/>,
@@ -866,8 +866,8 @@ declare function html:generate-list-toc-etc-html($termListIri as xs:string) as e
     <li><a href="#4">4 Terms that are members of this list</a></li>
   </ul>
   <h2><a id="1">1 Introduction</a></h2>
-  <p>This is a list of terms that may be part of a TDWG vocabulary.  If the terms on this list are defined by TDWG, the list corresponds to terms in a namespace whose IRI is listed in the header.  In the case where the terms are borrowed from a non-TDWG vocabulary, the list includes terms that are &quot;borrowed&quot; for inclusion in a TDWG vocabulary.  The list includes all &quot;current&quot; terms on the list, which may or may not be recommended for use.  Terms that are no longer recommended for use may have specified replacements - see the metadata about that specific term.</p>
-  <p>For more information about the structure and version model of TDWG vocabularies, see the <a href="http://www.tdwg.org/standards/147">TDWG Standards Documentation Specification</a>.</p>
+  <p>This is a list of terms that may be part of a Plant-Pollinator Interactions vocabulary (PPI).  If the terms on this list are defined by REBIPP, the list corresponds to terms in a namespace whose IRI is listed in the header.  In the case where the terms are borrowed from a non-REBIPP vocabulary, the list includes terms that are &quot;borrowed&quot; for inclusion in a PPI vocabulary.  The list includes all &quot;current&quot; terms on the list, which may or may not be recommended for use.  Terms that are no longer recommended for use may have specified replacements - see the metadata about that specific term.</p>
+  <p>For more information about the structure and version model of PPI vocabulary, see the <a href="http://www.rebipp.org.br/standards/ppi">Plant-Pollinator Interactions Vocabulary Specification</a>.</p>
   <h2><a id="2">2 List versions</a></h2>
   <p>List versions are &quot;snapshots&quot; of the term list at a particular point in time. To examine specific historical versions of this list, click on one of the links below.</p>
   <ul style="list-style: none;">{
@@ -970,10 +970,10 @@ return
 
   if ($std != "")
   then (
-    <strong>Part of TDWG Standard: </strong>,<a href='{$std}'>{$std}</a>,<br/>
+    <strong>Part of Standard: </strong>,<a href='{$std}'>{$std}</a>,<br/>
     )
   else (
-    <span>Not part of any TDWG Standard</span>,<br/>
+    <span>Not part of any Standard</span>,<br/>
     ),
 
   <strong>This version: </strong>,<a href='{$record/version/text()}'>{$record/version/text()}</a>,<br/>,
@@ -1018,9 +1018,9 @@ declare function html:generate-list-versions-toc-etc-html($termListVersionIri as
     <li><a href="#3">3 Term versions that were members of this list when this version of it was issued</a></li>
   </ul>
   <h2><a id="1">1 Introduction</a></h2>
-  <p>This is a list of term versions that may be part of a TDWG vocabulary.  If the terms whose versions are on this list were defined by TDWG, the list corresponds to term versions in a namespace whose IRI is listed in the header.  In the case where the terms were borrowed from a non-TDWG vocabulary, the list includes term versions that were &quot;borrowed&quot; for inclusion in a TDWG vocabulary.</p>
+  <p>This is a list of term versions that may be part of a REBIPP vocabulary.  If the terms whose versions are on this list were defined by REBIPP, the list corresponds to term versions in a namespace whose IRI is listed in the header.  In the case where the terms were borrowed from a non-REBIPP vocabulary, the list includes term versions that were &quot;borrowed&quot; for inclusion in a REBIPP vocabulary.</p>
   <p>This list includes term versions that were part of the term list at the time this version was issued.  The status of the individual terms may have changed since the version was issued.  The version status indicates its status at the present time, not at the time the list version was issued.</p>
-  <p>For more information about the structure and version model of TDWG vocabularies, see the <a href="http://www.tdwg.org/standards/147">TDWG Standards Documentation Specification</a>.</p>
+  <p>For more information about the structure and version model of REBIPP vocabularies, see the <a href="http://www.rebipp.org.br/standards/ppi">Plant-Pollinator Interactions Vocabulary Specification</a>.</p>
   <h2><a id="2">2 List version distributions</a></h2>
   <p>This term versions list is available in the formats or distribution methods listed in the table below.  Please note that distribution access URLs may be subject to change over time.  Therefore, it is preferable to request the abstract IRI of the resources and request the desired Content-type through content negotiation.</p>
   <table border="1">{
@@ -1074,8 +1074,7 @@ fn:string-length($record/version/text())-11) (: find the part of the version bef
 (: This is the test template web page for the /home URI pattern :)
 declare function html:generate-list($db)
 {
-let $repoPath := "https://raw.githubusercontent.com/rebipp/rs.rebipp.org.br
-/"||html:branch()||"/"
+let $repoPath := "https://raw.githubusercontent.com/rebipp/rs.rebipp.org.br/"||html:branch()||"/"
 let $config := html:load-configuration($repoPath, $db)
 
 let $coreDoc := $config/coreClassFile/text()
@@ -1103,7 +1102,7 @@ return
          <tr><td>Identifier:</td><td>{$record/term_isDefinedBy/text()||$record/term_localName/text()}</td></tr>,
          <tr><td>Class:</td><td>{$record/dwcattributes_organizedInClass/text()}</td></tr>,
          <tr><td>Definition:</td><td>{$record/rdfs_comment/text()}</td></tr>,
-         <tr><td>Comment:</td><td>{$record/dcterms_description/text()||" For discussion see "}<a href="{'http://terms.rebipp.org.br/wiki/dwc:'||$record/term_localName/text()}">{'http://terms.rebipp.org.br/wiki/dwc:'||$record/term_localName/text()}</a></td></tr>,
+         <tr><td>Comment:</td><td>{$record/dcterms_description/text()||" For discussion see "}<a href="{'http://terms.rebipp.org.br/wiki/ppi:'||$record/term_localName/text()}">{'http://terms.rebipp.org.br/wiki/ppi:'||$record/term_localName/text()}</a></td></tr>,
          <tr><td>Details:</td><td><a href="{$record/version/text()}">{$record/term_localName/text()}</a></td></tr>
          )
        }

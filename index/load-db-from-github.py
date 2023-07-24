@@ -121,14 +121,12 @@ def buildGenericXml(rootElementName, csvData):
 
 	rowNum = 0
 	for row in csvData:
-		print("|".join(row))
 		if rowNum == 0:
 			tags = row
 			# replace spaces w/ underscores in tag names
 			for i in range(len(tags)):
 				tags[i] = tags[i].replace(' ', '_')
 		else:
-			print("|".join(tags))
 			xmlData = xmlData + '<record>' + "\n"
 			for i in range(len(tags)):
 				xmlData = xmlData + '    ' + '<' + tags[i] + '>' + escapeBadXmlCharacters(row[i]) + '</' + tags[i] + '>' + "\n"
